@@ -1,6 +1,6 @@
-export {removeperson} from "../reducers/personSlice"
+export {removeperson} from "../reducers/PersonSlice"
 import axios from "../../utils/Axios"
-import { loadperson } from "../reducers/personSlice"
+import { loadperson } from "../reducers/PersonSlice"
 
 
 export const asyncloadperson = (id) => async (dispatch, getState) =>{
