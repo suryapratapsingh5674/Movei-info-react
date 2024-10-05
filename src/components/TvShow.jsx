@@ -10,7 +10,7 @@ import Droupdown from './partials/Droupdown'
 import DataLoad from "./partials/DataLoad";
 import Loading from "./Loading";
 
-function Tvshow() {
+function TvShow() {
 
   document.title = "Movie Info | TVshow"
 
@@ -75,4 +75,4 @@ function Tvshow() {
     ) : <Loading />
 }
 
-export default Tvshow
+export default TvShow
