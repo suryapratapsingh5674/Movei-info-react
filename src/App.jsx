@@ -37,7 +37,7 @@ function App() {
   }, [])
 
   return (
-    <div className='bg-[#1F1E24] w-full min-h-screen flex flex-col md:flex-row overflow-x-hidden no-scrollbar'>
+    <div className='bg-[#1F1E24] w-full min-h-screen overflow-x-hidden no-scrollbar'>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trending" element={<Trending/>} />

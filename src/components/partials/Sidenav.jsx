@@ -26,7 +26,7 @@ function Sidenav() {
       <div className={`
         ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
         md:translate-x-0 
-        fixed md:static 
+        fixed 
         z-[108] 
         w-80 md:w-72 lg:w-80 
         flex-shrink-0 
@@ -37,6 +37,7 @@ function Sidenav() {
         transition-transform duration-300 ease-in-out
         overflow-y-auto
         no-scrollbar
+        top-0 left-0
       `}>
         <h1 className="text-lg md:text-xl lg:text-2xl text-white font-bold">
           <i className="text-[#6556CD] ri-tv-fill mr-2"></i>

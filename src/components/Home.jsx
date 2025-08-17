@@ -42,7 +42,7 @@ function Home() {
 
     return wallpaper && Trending ? (<>
     <Sidenav/>
-    <div className="flex-1 h-screen overflow-y-auto overflow-x-hidden no-scrollbar">
+    <div className="flex-1 min-h-screen ml-0 md:ml-72 lg:ml-80 overflow-y-auto overflow-x-hidden no-scrollbar">
         <Topnav />
         <Header data={wallpaper} />
 
@@ -50,7 +50,9 @@ function Home() {
       <h1 className='text-2xl sm:text-3xl font-bold text-zinc-400 mb-2 sm:mb-5'>Trending</h1>
       <Droupdown title="filter" option={['tv', 'movie', 'all']} func={(e) => setcategory(e.target.value)}/>
       </div>
-        <HorizontalCrads data={Trending}/>
+        <div className="pb-8 md:pb-12">
+          <HorizontalCrads data={Trending}/>
+        </div>
     </div>
     </>) : <Loading/>
 }
