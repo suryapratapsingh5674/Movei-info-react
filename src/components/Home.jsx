@@ -6,23 +6,8 @@ import Header from "./partials/Header";
 import HorizontalCrads from "./partials/HorizontalCards";
 import Droupdown from "./partials/Droupdown";
 import Loading from "./Loading";
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
 
 function Home() {
-
-    const lenis = new Lenis()
-
-lenis.on('scroll', (e) => {
-  console.log(e)
-})
-
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
-
-requestAnimationFrame(raf)
 
     document.title = "Movie Info | Home"
 
@@ -51,18 +36,18 @@ requestAnimationFrame(raf)
     useEffect(()=>{
         getTrending();
         !wallpaper && getWallpaper();
-    }, [category])
+    }, [category]) // eslint-disable-line react-hooks/exhaustive-deps
 
     
 
     return wallpaper && Trending ? (<>
     <Sidenav/>
-    <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
+    <div className="flex-1 h-screen overflow-y-auto overflow-x-hidden no-scrollbar">
         <Topnav />
         <Header data={wallpaper} />
 
-        <div className="flex justify-between p-5 mt-[-1%]">
-      <h1 className='text-3xl font-bold text-zinc-400 mb-5'>Trending</h1>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 sm:p-5 mt-[-1%] gap-3 sm:gap-0">
+      <h1 className='text-2xl sm:text-3xl font-bold text-zinc-400 mb-2 sm:mb-5'>Trending</h1>
       <Droupdown title="filter" option={['tv', 'movie', 'all']} func={(e) => setcategory(e.target.value)}/>
       </div>
         <HorizontalCrads data={Trending}/>

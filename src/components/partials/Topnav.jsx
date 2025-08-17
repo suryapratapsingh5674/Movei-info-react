@@ -22,21 +22,40 @@ function Topnav() {
   }, [query])
 
   return (
-    <div className='w-full z-[100] h-[10vh] relative flex justify-start items-center ml-[15%]'>
-        <i className="text-zinc-400 text-3xl ri-search-line"></i>
-        <input onChange={(e) => setquery(e.target.value)} value={query } type="text" name="" placeholder='Search anything' className='w-[50%] h-12 text-zinc-200 mx-10 p-5 outline-none border-none text-xl bg-zinc-700 rounded-lg' />
-        {query.length > 0 && (<i onClick={() => setquery("")} className="text-zinc-400 text-3xl ml-[-2vw] ri-close-line cursor-pointer duration-200"></i>)}
+    <div className='w-full z-[100] h-[8vh] md:h-[10vh] relative flex justify-start items-center px-4 md:ml-[15%]'>
+        <i className="text-zinc-400 text-2xl md:text-3xl ri-search-line"></i>
+        <input 
+          onChange={(e) => setquery(e.target.value)} 
+          value={query} 
+          type="text" 
+          placeholder='Search anything' 
+          className='w-[60%] sm:w-[50%] h-10 md:h-12 text-zinc-200 mx-4 md:mx-10 p-3 md:p-5 outline-none border-none text-sm md:text-xl bg-zinc-700 rounded-lg' 
+        />
+        {query.length > 0 && (
+          <i 
+            onClick={() => setquery("")} 
+            className="text-zinc-400 text-2xl md:text-3xl ml-[-8vw] md:ml-[-2vw] ri-close-line cursor-pointer duration-200"
+          ></i>
+        )}
 
-        <div className='absolute w-[50%] mt-[-0.5%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto rounded ml-[6%]'>
-          {
-            Searches.map((s, i) => (
-              <Link to={`/${s.media_type}/details/${s.id}`} key={i} className='font-semibold hover:text-black hover:bg-zinc-300 duration-300 text-zinc-600 w-[100%] p-6 flex gap-4 items-center border-b-2 border-zinc-100'>
-          <img src={s.backdrop_path || s.poster_path || s.profile_path ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.poster_path || s.profile_path}` : noimage} className='w-32 h-32 rounded object-cover shadow' alt="" />
-          <span>{s.name || s.title || s.original_name || s.original_title}</span>
-          </Link>
-            ))
-          }
-        </div>
+        {query.length > 0 && (
+          <div className='absolute w-[80%] sm:w-[60%] md:w-[50%] mt-[-0.5%] max-h-[40vh] md:max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto no-scrollbar rounded ml-[10%] md:ml-[6%] shadow-lg'>
+            {Searches.map((s, i) => (
+              <Link 
+                to={`/${s.media_type}/details/${s.id}`} 
+                key={i} 
+                className='font-semibold hover:text-black hover:bg-zinc-300 duration-300 text-zinc-600 w-[100%] p-3 md:p-6 flex gap-2 md:gap-4 items-center border-b-2 border-zinc-100'
+              >
+                <img 
+                  src={s.backdrop_path || s.poster_path || s.profile_path ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.poster_path || s.profile_path}` : noimage} 
+                  className='w-16 h-16 md:w-32 md:h-32 rounded object-cover shadow' 
+                  alt="" 
+                />
+                <span className='text-sm md:text-base'>{s.name || s.title || s.original_name || s.original_title}</span>
+              </Link>
+            ))}
+          </div>
+        )}
     </div>
   )
 }

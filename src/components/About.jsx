@@ -24,7 +24,6 @@ function About() {
         <h1 className="text-2xl mb-2 mt-4 font-bold">Social Media</h1>
         <h1 className="text-2xl mb-2 mt-4 font-bold">Stay connected:</h1>
         <h2 className="text-lg w-[80vw] font-medium">Twitter: <Link target="_blank" to="https://x.com/suryat6574" className="text-blue-400">https://x.com/suryat6574</Link></h2>
-        <h2 className="text-lg w-[80vw] font-medium">Facebook: <Link target="_blank" to="https://www.instagram.com/suryat6574/" className="text-blue-400">https://www.instagram.com/suryat6574/</Link></h2>
         <h2 className="text-lg w-[80vw] font-medium">Github: <Link target="_blank" to="https://github.com/suryapratapsingh5674" className="text-blue-400">https://github.com/suryapratapsingh5674</Link></h2>
         <h1 className="text-2xl mb-2 mt-4 font-bold">Disclaimer</h1>
         <h2 className="text-lg w-[80vw] font-normal">Movie info by surya is an informational platform and does not host or distribute copyrighted content.Thank you for visiting Movie info. Happy watching!</h2>

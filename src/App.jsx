@@ -1,4 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 import Home from './components/Home'
 import Trending from './components/Trending'
 import Popular from './components/Popular'
@@ -14,8 +17,27 @@ import Trailer from './components/partials/Trailer'
 import Notfound from './components/Notfound'
 
 function App() {
+  
+  useEffect(() => {
+    const lenis = new Lenis({
+      smooth: true,
+      lerp: 0.1,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy();
+    }
+  }, [])
+
   return (
-    <div className='bg-[#1F1E24] w-screen h-screen flex'>
+    <div className='bg-[#1F1E24] w-full min-h-screen flex flex-col md:flex-row overflow-x-hidden no-scrollbar'>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trending" element={<Trending/>} />

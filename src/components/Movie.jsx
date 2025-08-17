@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
+// import Lenis from 'lenis'
+// import 'lenis/dist/lenis.css'
 import axios from "../utils/Axios";
 import Cards from './partials/Cards'
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -20,14 +20,14 @@ function Movie() {
     const [page, setpage] = useState(1);
     const [hasMore, sethasMore] = useState(true);
   
-    const lenis = new Lenis()
+    // const lenis = new Lenis()
   
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
+    // function raf(time) {
+    //   lenis.raf(time)
+    //   requestAnimationFrame(raf)
+    // }
   
-    requestAnimationFrame(raf)
+    // requestAnimationFrame(raf)
   
   async function getmovie(){
     try {
@@ -57,10 +57,10 @@ function Movie() {
   
   useEffect(() => {
     refreshHandler();
-  }, [category])
+  }, [category]) // eslint-disable-line react-hooks/exhaustive-deps
   
     return  movie.length > 0 ? (
-      <div className="w-full h-screen scroller">
+      <div className="w-full min-h-screen">
         <div className="w-full px-[5%] flex items-center mb-10">
         <i onClick={() => navigate(-1)} className="hover:text-[#6556CD] text-2xl mr-3 cursor-pointer text-zinc-400 ri-arrow-left-line"></i>
           <h1 className="text-2xl font-semibold text-zinc-400">movie</h1>

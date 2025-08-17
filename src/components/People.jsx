@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
 import axios from "../utils/Axios";
 import Cards from './partials/Cards'
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -17,17 +15,8 @@ function People() {
     const [people, setpeople] = useState([]);
     const [page, setpage] = useState(1);
     const [hasMore, sethasMore] = useState(true);
-  
-    const lenis = new Lenis()
-  
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-  
-    requestAnimationFrame(raf)
-  
-  async function getpeople(){
+
+    async function getpeople(){
     try {
         const {data} = await axios.get(`person/popular?page=${page}`);
         // setTrending(data.results);
@@ -55,16 +44,20 @@ function People() {
   
   useEffect(() => {
     refreshHandler();
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   console.log(people);
   
   
     return  people.length > 0 ? (
-      <div className="w-full h-screen scroller">
-        <div className="w-full px-[5%] flex items-center mb-10">
-        <i onClick={() => navigate(-1)} className="hover:text-[#6556CD] text-2xl mr-3 cursor-pointer text-zinc-400 ri-arrow-left-line"></i>
-          <h1 className="text-2xl font-semibold text-zinc-400">TVshow</h1>
-          <Topnav />
+      <div className="w-full min-h-screen">
+        <div className="w-full px-3 sm:px-[5%] flex flex-col sm:flex-row items-start sm:items-center mb-6 sm:mb-10 gap-3 sm:gap-0">
+          <div className="flex items-center">
+            <i onClick={() => navigate(-1)} className="hover:text-[#6556CD] text-xl sm:text-2xl mr-3 cursor-pointer text-zinc-400 ri-arrow-left-line"></i>
+            <h1 className="text-xl sm:text-2xl font-semibold text-zinc-400">People</h1>
+          </div>
+          <div className="w-full sm:w-auto">
+            <Topnav />
+          </div>
         </div>
         <InfiniteScroll dataLength={people.length} next={getpeople} hasMore={hasMore} loader={<DataLoad/>}>
         <Cards data={people} title="people"/>

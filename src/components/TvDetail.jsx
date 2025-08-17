@@ -28,7 +28,7 @@ function TvDetail() {
       background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
-    }} className='w-full relative min-h-[180vh] px-[10%] overflow-y-auto overflow-x-hidden'>
+    }} className='w-full relative min-h-[180vh] px-[10%] overflow-y-auto overflow-x-hidden no-scrollbar'>
       <nav className='w-full text-zinc-100 h-[10vh] flex items-center gap-10 text-xl'>
       <Link onClick={() => navigate(-1)} className="hover:text-[#6556CD] text-2xl mr-3 cursor-pointer text-white ri-arrow-left-line"></Link>
       <Link target='_blank' to={info.detail.homepage}><i className="ri-external-link-fill"></i></Link>

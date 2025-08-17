@@ -7,8 +7,6 @@ import Cards from './partials/Cards'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import DataLoad from "./partials/DataLoad";
 import Loading from "./Loading";
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
 
  
 function Trending() {
@@ -21,15 +19,6 @@ function Trending() {
   const [Trending, setTrending] = useState([]);
   const [page, setpage] = useState(1);
   const [hasMore, sethasMore] = useState(true);
-
-  const lenis = new Lenis()
-
-  function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
-  }
-
-  requestAnimationFrame(raf)
 
   async function getTrending(){
     try {
@@ -59,10 +48,10 @@ const refreshHandler = () => {
 
 useEffect(() => {
     refreshHandler();
-}, [category, duration])
+}, [category, duration]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return Trending.length > 0 ? (
-    <div className="w-full h-screen scroller">
+    <div className="w-full min-h-screen">
       <div className="w-full px-[5%] flex items-center mb-10">
       <i onClick={() => navigate(-1)} className="hover:text-[#6556CD] text-2xl mr-3 cursor-pointer text-zinc-400 ri-arrow-left-line"></i>
         <h1 className="text-2xl font-semibold text-zinc-400">Trending</h1>
