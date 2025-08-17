@@ -26,9 +26,47 @@ function Trailer() {
     
 
   return videoUrl ? (
-    <div className="bg-[rgba(0,0,0,.8)] absolute top-0 left-0 z-[100] w-screen h-screen flex items-start justify-center">
-        <Link onClick={() => navigate(-1)} className="hover:text-[#6556CD] text-3xl pt-2 pl-2 mr-3 cursor-pointer text-zinc-400 ri-close-fill"></Link>
-        <ReactPlayer height={750} width={1500} url={`https://www.youtube.com/watch?v=${videoUrl}`}/>
+    <div className="bg-[rgba(0,0,0,.9)] fixed top-0 left-0 z-[100] w-screen h-screen flex flex-col items-center justify-center">
+        {/* Cancel Button - Positioned above video */}
+        <div className="w-full flex justify-end p-4 sm:p-6 absolute top-0 right-0 z-[110]">
+          <Link 
+            onClick={() => navigate(-1)} 
+            className="
+              hover:text-[#6556CD] hover:bg-white hover:bg-opacity-20 
+              text-white text-2xl sm:text-3xl md:text-4xl 
+              p-2 sm:p-3 
+              cursor-pointer 
+              rounded-full 
+              transition-all duration-200 
+              bg-black bg-opacity-50
+              ri-close-fill
+            "
+          ></Link>
+        </div>
+
+        {/* Video Player - Full Screen */}
+        <div className="w-full h-full flex items-center justify-center p-4 sm:p-6 md:p-8">
+          <ReactPlayer 
+            height="100%" 
+            width="100%" 
+            url={`https://www.youtube.com/watch?v=${videoUrl}`}
+            playing={true}
+            controls={true}
+            config={{
+              youtube: {
+                playerVars: {
+                  autoplay: 1,
+                  modestbranding: 1,
+                  rel: 0
+                }
+              }
+            }}
+            style={{
+              maxWidth: '100%',
+              maxHeight: '100%'
+            }}
+          />
+        </div>
     </div>
   ) : <Notfound />
 }
