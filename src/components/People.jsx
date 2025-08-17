@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Lenis from 'lenis'
-import 'lenis/dist/lenis.css'
+// import Lenis from 'lenis'
+// import 'lenis/dist/lenis.css'
 import axios from "../utils/Axios";
 import Cards from './partials/Cards'
 import InfiniteScroll from 'react-infinite-scroll-component';
